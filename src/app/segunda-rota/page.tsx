@@ -27,24 +27,14 @@ const AxiosPage = () => {
     useEffect(() => {
       
         const data = api.get(`/characters/?name=${characterName}&page=${page}`).then( (res) => {
-            setError(false);
-            console.log(data);
-            
-            console.log(res.data.items);
-            console.log(res.data);
-            console.log(characterName);
-
-            
-            console.log(data);
-            
+            setError(false);       
             characterName === "" ? setData(res.data.items) : setData(res.data);            
-
 
         }).catch( (err) => {
             console.log(err);
             if (err.response.status === 404) {
 
-                setErrorMessage("Erro 400. Dados ou página não encontrados. ");
+                setErrorMessage("Erro 400! Sinto muito, dados ou página não encontrados. ");
             }
 
             setError(true);
@@ -57,21 +47,18 @@ const AxiosPage = () => {
     return (
         <>
         {error && <h1>{errorMessage}</h1>}
-        {data.length == 0 && <h1>Personagem não encontrada!</h1>}
-        <div className="flex gap-3">
+        {data.length == 0 && <h1>Personagem ou página não encontradas!</h1>}
+        <div className="flex gap-3 m-4 flex-wrap">
             <div className="flex gap-3">
-                <label htmlFor="character-search">Character:</label>
-                <input placeholder="Type a character name..." className="bg-neutral-100 p-2" id="character-search" value={characterName} type="text" onChange={ (e) => { setCharacterName(e.target.value)}} />
-                {/* <input type="text" onChange={ (e) => { setCharacterName(e.target.value)} } /> */}
-                <p>{characterName}</p>
+                <label htmlFor="character-search" className="text-center flex flex-col items-center justify-center" >Character:</label>
+                <input placeholder="E.g.: Goku..." className="bg-neutral-200 p-1 rounded" id="character-search" value={characterName} type="text" onChange={ (e) => { setCharacterName(e.target.value)}} />
             </div>
-            <div>
-                <label htmlFor="page">Page:</label>
-                <input placeholder="1/42" value={page} className="bg-neutral-100 p-2" id="page" type="text" onChange={ (e) =>  setPage(e.target.value) } />
-                <p>{page}</p>
+            <div className="flex gap-3">
+                <label htmlFor="character-search" className="text-center flex flex-col items-center justify-center" >Page:</label>
+                <input placeholder="1/6" value={page} className="bg-neutral-200 p-1 rounded" id="page" type="text" onChange={ (e) =>  setPage(e.target.value) } />
             </div>
         </div>
-        <div className="flex flex-wrap w-10/12 gap-4">
+        <div className="flex flex-wrap w-10/12 gap-4 items-center justify-center">
             {data.map( ( item ) => {
                 return(
                     <Card id={item.id} name={item.name} ki={item.ki} affiliation={item.affiliation} gender={item.gender} image={item.image} race={item.race} />
