@@ -4,7 +4,7 @@ const nextConfig = {
         return [
                 {
                     source: "/",
-                    destination: "/first-route" 
+                    destination: "/primeira-rota" 
                 },
                 {
                     source: "/segunda-rota",
