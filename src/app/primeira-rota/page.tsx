@@ -1,9 +1,6 @@
 "use client"
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
-
-import bg1 from "@/assets/bg1.png"
+import { Suspense, useEffect, useState } from "react";
 import Card from "@/components/Card";
 
 const baseulr = "https://dragonball-api.com/api/characters"
@@ -38,19 +35,21 @@ const FetchPage = () => {
     
 
     return (
-        <>
-        <p>Fetch!</p>
-        <div className="flex flex-wrap w-full items-center justify-center gap-4">
+        <Suspense fallback={
+            <>
+                <h1 className="bg-amber-300 p-8 text-base text-amber-800 font-semibold m-4 hover:scale-110 transition-transform duration-500 ">Carregando...</h1>
+            </>
+        }>
+            <div className="flex flex-wrap w-10/12 items-center justify-center gap-4 m-16">
 
-            {characters.map( ( item ) => {
-                return(
-                    <Card id={item.id} name={item.name} ki={item.ki} affiliation={item.affiliation} gender={item.gender} image={item.image} race={item.race} />
-                )
-            })}
+                {characters.map( ( item ) => {
+                    return(
+                        <Card id={item.id} name={item.name} ki={item.ki} affiliation={item.affiliation} gender={item.gender} image={item.image} race={item.race} />
+                    )
+                })}
 
-        </div>
-
-        </>
+            </div>
+        </Suspense>
     )
 }
 
