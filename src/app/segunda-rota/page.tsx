@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from "react";
 import Image from "next/image";
 
 import { api } from "@/constants/api";
+import Card from "@/components/Card";
 
 interface IData {
     id: number,
@@ -73,7 +74,7 @@ const AxiosPage = () => {
         <div className="flex flex-wrap w-10/12 gap-4">
             {data.map( ( item ) => {
                 return(
-                    <h1>{item.name}</h1>
+                    <Card id={item.id} name={item.name} ki={item.ki} affiliation={item.affiliation} gender={item.gender} image={item.image} race={item.race} />
                 )
             })}
         </div>
