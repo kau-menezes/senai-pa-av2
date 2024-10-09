@@ -25,20 +25,23 @@ const AxiosPage = () => {
 
     useEffect(() => {
       
-        const data = api.get(`/character/?name=${characterName}`).then( (res) => {
+        const data = api.get(`/characters/?name=${characterName}&page=${page}`).then( (res) => {
             setError(false);
-            console.log(res.data.results);
+            console.log(data);
+            
+            console.log(res.data.items);
+            console.log(res.data);
+            console.log(characterName);
 
-            if (characterName == "") {
-                setData(res.data.items);
+            
+            console.log(data);
+            
+            characterName === "" ? setData(res.data.items) : setData(res.data);            
 
-            } else {
-                setData(res.data);
-            }
 
         }).catch( (err) => {
             console.log(err);
-            if (err.response.status === 400) {
+            if (err.response.status === 404) {
 
                 setErrorMessage("Erro 400. Dados ou página não encontrados. ");
             }
@@ -46,21 +49,19 @@ const AxiosPage = () => {
             setError(true);
             
         })
-
-        
       
-    }, [characterName])
+    }, [characterName, page])
     
 
     return (
         <>
         {error && <h1>{errorMessage}</h1>}
-        {data.length === 0 && <h1>Personagem não encontrada!</h1>}
-        <h1 className="font-bold">axios! </h1>
+        {data.length == 0 && <h1>Personagem não encontrada!</h1>}
         <div className="flex gap-3">
             <div className="flex gap-3">
                 <label htmlFor="character-search">Character:</label>
-                <input placeholder="Type a character name..." className="bg-neutral-100 p-2" id="character-search" type="text" onChange={ (e) => { setCharacterName(e.target.value)}} />
+                <input placeholder="Type a character name..." className="bg-neutral-100 p-2" id="character-search" value={characterName} type="text" onChange={ (e) => { setCharacterName(e.target.value)}} />
+                {/* <input type="text" onChange={ (e) => { setCharacterName(e.target.value)} } /> */}
                 <p>{characterName}</p>
             </div>
             <div>
