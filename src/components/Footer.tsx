@@ -1,7 +1,9 @@
 const Footer = ( ) => {
 
     return (
-        <p className="w-full text-center bg-neutral-400 text-white">Segunda avaliação da disciplina de Programação de Aplicativos, por Kauane Vieira de Menezes</p>
+        <footer className="h-[4vh] flex items-center justify-center  bg-neutral-400">
+            <p className="w-full text-center text-white">Segunda avaliação da disciplina de Programação de Aplicativos, por Kauane Vieira de Menezes</p>
+        </footer>
     )
 }
 
