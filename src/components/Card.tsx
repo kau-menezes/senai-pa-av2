@@ -11,9 +11,9 @@ interface IData {
     affiliation: string
 }
 
-const Card = ({id, name, ki, image, race, gender, affiliation}:IData) => {
+const Card = ({id, name, ki, image, race, gender, affiliation}: IData) => {
     return(
-        <div className="shadow-md relative h-[600px] w-[300px] flex flex-col rounded " key={ id }>
+        <div className="shadow-md relative h-[600px] w-[300px] flex flex-col rounded" key={ id }>
             <div className="h-2/3">
                 <Image className=" h-full object-cover opacity-60 z-30 rounded" src={bg1} alt="card background "/>
             </div>
@@ -22,7 +22,7 @@ const Card = ({id, name, ki, image, race, gender, affiliation}:IData) => {
                     <p className=" text-amber-600 font-semibold text-sm text-center">KI {ki}</p>
                     <p className="mt-1 font-bold text-xl text-wrap text-foreground text-center">{ name }</p>
                 </div>
-                <Image className="min-h-[400px] h-full max-h-[400px] max-w-[280px] hover:scale-110 object-scale-down transition-transform duration-500 absolute top-3 self-center" src={image} alt={name} width={280} height={400}/>
+                <Image className="min-h-[400px] h-full max-h-[400px] max-w-[280px] hover:cursor-pointer hover:scale-110 object-scale-down transition-transform duration-500 absolute top-3 self-center" src={image} alt={name} width={280} height={400}/>
                 <div className="flex justify-center divide-amber-700 divide-x-2 w-full rounded-md overflow-hidden">
                     <div className={` flex flex-col items-center p-2 w-1/3 bg-amber-500 leading-tight`}>
                         <p className="text-white font-medium text-center">{race}</p>

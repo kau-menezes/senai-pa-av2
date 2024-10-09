@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppinsFont.variable} antialiased font-poppinsFont`}>
-        <Header route1="Primeira Rota 🔢" route2="Segunda Rota 🔢" route3="Terceira Rota 🔢"/>
+        <Header route1="Primeira Rota" route2="Segunda Rota" route3="Terceira Rota"/>
         <main className="flex flex-col items-center">
           {children}
         </main>
