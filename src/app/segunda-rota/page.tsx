@@ -58,13 +58,19 @@ const AxiosPage = () => {
             </div>
             {error && <h1>{errorMessage}</h1>}
             {data.length == 0 && <h1 className="bg-amber-300 p-8 text-lg text-amber-800 font-semibold m-4 hover:scale-110 transition-transform duration-500 ">Personagem ou página não encontradas! :(</h1>}
-            <div className="flex flex-wrap w-10/12 gap-4 items-center justify-center">
-                {data.map( ( item ) => {
-                    return(
-                        <Card id={item.id} name={item.name} ki={item.ki} affiliation={item.affiliation} gender={item.gender} image={item.image} race={item.race} />
-                    )
-                })}
-            </div>
+            <Suspense fallback={
+                <>
+                <h1 className="bg-amber-300 p-8 text-base text-amber-800 font-semibold m-4 hover:scale-110 transition-transform duration-500 ">Carregando...</h1>
+                </>
+            }>
+                <div className="flex flex-wrap w-10/12 gap-4 items-center justify-center">
+                    {data.map( ( item ) => {
+                        return(
+                            <Card id={item.id} name={item.name} ki={item.ki} affiliation={item.affiliation} gender={item.gender} image={item.image} race={item.race} />
+                        )
+                    })}
+                </div>
+            </Suspense>
         </div>
     )
 }
