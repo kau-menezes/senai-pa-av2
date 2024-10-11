@@ -13,7 +13,12 @@ const config: Config = {
         foreground: "var(--foreground)",
       }, fontFamily: {
         poppinsFont: "var(--poppinsFont)"
-      }
+      },
+      extend: {
+        backgroundImage: {
+          'bg1': "url('../@/assets/bg1.png')",
+        },
+    }
     },
   },
   plugins: [],
