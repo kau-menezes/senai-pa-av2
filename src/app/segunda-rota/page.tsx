@@ -25,7 +25,7 @@ const AxiosPage = () => {
     const [page, setPage] = useState<string>("");
 
     useEffect(() => {
-      
+
         const data = api.get(`/characters/?name=${characterName}&page=${page}`).then( (res) => {
             setError(false);       
             characterName === "" ? setData(res.data.items) : setData(res.data);            

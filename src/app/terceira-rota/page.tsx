@@ -26,7 +26,7 @@ const ServerSidePage : React.FC = async () => {
     return(
         <>
             <Suspense fallback={<h1>loading...</h1>}>
-                <div className="flex gap-3 m-4 flex-wrap justify-center">
+                <div className="flex gap-8 m-4 flex-wrap justify-center">
                     {data.items.map( ( item ) => {
                         return(
                             <SimpleCard key={item.id} id={item.id} name={item.name} ki={item.ki} gender={item.gender} race={item.race}/>
